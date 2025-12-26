@@ -1,0 +1,40 @@
+[package]
+name = "web-match"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+tokio = { version = "1.40.0" , features = ["full"] }
+tokio-util = { version = "0.7", features = ["io"] }
+axum =  {version = "0.8.6", features = ["ws"] }
+axum-extra = {version = "0.12.1", features=["typed-header"]}
+
+reqwest = { version = "0.12.7" , features = ["json"] }
+tracing = "0.1.40"
+tracing-subscriber = { version = "0.3.18", features = ["env-filter"] }
+serde = {version = "1.0.215" , features=["derive"]}
+serde_json = "1.0.132"
+dotenv = "0.15.0"
+dotenv_codegen = "0.15.0"
+chrono = {version="0.4.38", features = ["serde"]} 
+thiserror = "2.0.3"
+
+
+moka = { version = "0.12.8", features = ["future","logging"] }
+alloy = { version = "1", features = ["full"] }
+futures = "0.3"
+anyhow = "1.0"
+ethers = "2.0.14"
+snafu = "0.8.0"
+sqlx = { version = "0.8", features = ["runtime-tokio", "tls-rustls", "postgres", "chrono", "migrate", "bigdecimal"] }
+bigdecimal = { version = "0.4", features = ["serde"] }
+base64 = "0.22"
+
+
+[profile.dev]
+opt-level = "s"
+cargo-evn="dev-cargo"
+
+[profile.release]
+opt-level = "s"
+cargo-evn="production-cargo"
